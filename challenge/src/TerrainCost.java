@@ -18,7 +18,7 @@ public class TerrainCost {
     }
 
 
-    public Object getCost(char Terrain) {
+    public int getCost(String Terrain) {
         return terrainCostDict.get(Terrain);
     }
 }
