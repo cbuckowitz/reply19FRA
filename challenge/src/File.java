@@ -4,13 +4,13 @@ import static java.lang.Integer.parseInt;
 
 public class File {
 
-    public static BufferedReader br = null;
-    public static int width = 0;
-    public static int height = 0;
-    public static int cust = 0;
-    public static int reply = 0;
-    public static String[] Customers;
-    public static String[] Map;
+    public BufferedReader br = null;
+    public int width = 0;
+    public int height = 0;
+    public int cust = 0;
+    public int reply = 0;
+    public String[] Customers;
+    public String[] Map;
 
     public File(String FileName){
         FileReader fr = null;
