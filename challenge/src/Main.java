@@ -21,7 +21,6 @@ public class Main {
         mo_converter.convert(mo_file.Map, mo_terrain_map);
 
 
-        ;
     }
 
 
