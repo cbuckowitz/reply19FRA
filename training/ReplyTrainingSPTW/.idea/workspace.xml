@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36c8617c-bb02-4f57-b85d-41316a53e309" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../challenge/src/CustomerConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/src/CustomerConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../challenge/src/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/src/Customers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../challenge/src/TerrainConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/src/TerrainConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../challenge/src/TerrainCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/src/TerrainCost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
