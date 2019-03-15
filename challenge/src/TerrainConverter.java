@@ -21,7 +21,11 @@ public class TerrainConverter {
             int x = parseInt(Line[0]);
             int y = parseInt(Line[1]);
             int value = Cost.getCost(Line[2]);
-            io_terrain.setField(x,y,value);
+            try {
+                io_terrain.setField(x,y,value);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             counter ++;
         }
 
