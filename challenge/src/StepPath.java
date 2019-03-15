@@ -1,7 +1,7 @@
 public class StepPath {
 
 
-    public int mv_cost;
+    public int mv_reward;
     public int mv_x;
     public int mv_y;
 
@@ -12,6 +12,7 @@ public class StepPath {
 
         mv_x = iv_x;
         mv_y = iv_y;
+
 
         mv_path = iv_x + " " + iv_y + " ";
 

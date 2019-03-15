@@ -17,6 +17,7 @@ public class Main {
 
             }
 
+            lo_writer.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -26,9 +27,9 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        String lv_filename = "data/1_victoria_lake.txt";
+        String lv_filename = "data/4_manhattan.txt";
 
 
         File mo_file;
@@ -36,6 +37,8 @@ public class Main {
         //construct file reader here
         //read file given name here
         mo_file = new File(lv_filename);
+
+        mo_file.readFile();
 
 
         IntMap mo_terrain_map = new IntMap(mo_file.width, mo_file.height);
@@ -55,7 +58,9 @@ public class Main {
         NaiveOneStep mo_onestep = new NaiveOneStep();
         StepPath[] lt_paths = mo_onestep.computePaths(lt_customer, mo_terrain_map);
 
-        outputStepPath(lv_filename + ".output.txt", lt_paths);
+        StepPath[] lt_naive_paths = mo_onestep.prioPaths(lt_paths, mo_file.reply);
+
+        outputStepPath(lv_filename + ".output.txt", lt_naive_paths);
     }
 
 

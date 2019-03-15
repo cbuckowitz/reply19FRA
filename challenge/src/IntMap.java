@@ -28,6 +28,10 @@ public class IntMap {
 
         if (x > 0 && x < mv_width &&
             y > 0 && y < mv_heigth) {
+
+            if (mt_map[x][y] < 1) {
+                throw  new Exception();
+            }
             return mt_map[x][y];
         }
 

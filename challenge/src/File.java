@@ -30,15 +30,20 @@ public class File {
 
         String zeile = " ";
 
+
         while( (zeile = br.readLine()) != null ){
-            if ( counter == 1 ){
+            if ( counter == 0 ){
                 String[] Line = zeile.split(" ");
                 width =  parseInt(Line[0]);
                 height =  parseInt(Line[1]);
                 cust =  parseInt(Line[2]);
                 reply =  parseInt(Line[3]);
+
+                Customers = new String[cust];
+                Map = new String[height];
+
             }
-            else if ( counter <= cust && counter > 1 ){
+            else if ( counter < cust && counter >= 1 ){
                 Customers[customerCounter] = zeile;
                 customerCounter ++;
             }
