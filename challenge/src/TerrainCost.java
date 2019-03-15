@@ -1,21 +1,24 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 public class TerrainCost {
 
-    protected Dictionary TerrainCostDict = new Hashtable();
+//    protected Dictionary terrainCostDict = new Hashtable();
+
+    private Map<Character, Integer> terrainCostDict = new HashMap<Character, Integer>();
 
     public TerrainCost(){
-        TerrainCostDict.put('~',800);
-        TerrainCostDict.put('*',200);
-        TerrainCostDict.put('+',150);
-        TerrainCostDict.put('X',120);
-        TerrainCostDict.put('_',100);
-        TerrainCostDict.put('H',70);
-        TerrainCostDict.put('T',50);
+        terrainCostDict.put('~',800);
+        terrainCostDict.put('*',200);
+        terrainCostDict.put('+',150);
+        terrainCostDict.put('X',120);
+        terrainCostDict.put('_',100);
+        terrainCostDict.put('H',70);
+        terrainCostDict.put('T',50);
     }
 
 
     public Object getCost(char Terrain) {
-        Object Cost = TerrainCostDict.get(Terrain);
-        return Cost;
+        return terrainCostDict.get(Terrain);
     }
 }

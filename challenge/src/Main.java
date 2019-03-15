@@ -1,8 +1,30 @@
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+
+        File mo_file;
+
+        mo_file = new File("data/victoria_lake.txt");
+        //construct file reader here
+        //read file given name here
+
+        //construct converter here
+
+        //construct Terrain IntMap from char intMap
+
+        // einlesen der Datei
+
+        // konvertieren der IntMap in Terrain-Cost-Matrix
+
+
+        ;
     }
+
+
+
+
+
 }
 
 // Dennis was here

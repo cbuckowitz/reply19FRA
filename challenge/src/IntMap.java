@@ -1,10 +1,10 @@
-public class Map {
+public class IntMap {
 
 
     public int[][] mt_map;
 
 
-    public Map(int iv_width, int iv_heigt) {
+    public IntMap(int iv_width, int iv_heigt) {
 
         mt_map = new int[iv_width][iv_heigt];
     }
