@@ -9,15 +9,24 @@ public class File {
     public static int cust = 0;
     public static int reply = 0;
     public static String[] Customers;
+    public static BufferedReader br = null;
 
-    public File(FileName string){
-        BufferedReader br = createReader(FileName);
+    public File(String FileName){
+        FileReader fr = null;
+        try {
+            fr = new FileReader(FileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        br = new BufferedReader(fr);
     }
 
-    public void readFile(){
+    public void readFile() throws IOException {
 
         int counter = 0;
-        int custCounter = 0;
+        int customerCounter = 0;
+
+        String zeile = " ";
 
         while( (zeile = br.readLine()) != null ){
             counter ++;
@@ -30,9 +39,12 @@ public class File {
             }
 
             if ( counter <= cust && counter > 1 ){
-                Customers[custCounter] = zeile;
-                custCounter ++;
+                Customers[customerCounter] = zeile;
+                customerCounter ++;
             }
+
+
+
         }
     }
 }
