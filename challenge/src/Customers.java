@@ -1,3 +1,5 @@
+import static java.lang.Integer.parseInt;
+
 public class Customer {
 
     public int xAxis = 0;
