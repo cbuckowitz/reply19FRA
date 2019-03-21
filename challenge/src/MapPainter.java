@@ -111,5 +111,61 @@ public class MapPainter {
     }
 
 
+    void drawCustomers(Customer[] it_customer) {
+
+        MapRect ls_rect;
+
+        int lv_min_reward = Integer.MAX_VALUE;
+        int lv_max_reward = 0;
+
+        for (Customer lo_customer : it_customer) {
+            if (lo_customer.reward > lv_max_reward) {
+                lv_max_reward = lo_customer.reward;
+            }
+            if (lo_customer.reward < lv_min_reward) {
+                lv_min_reward = lo_customer.reward;
+            }
+        }
+
+        p.stroke(255, 255, 0, 192);
+
+        for (Customer lo_customer : it_customer) {
+            ls_rect = mapRect(lo_customer.xAxis, lo_customer.yAxis);
+            p.strokeWeight(p.map(lo_customer.reward, lv_min_reward, lv_max_reward, mv_field_size, mv_field_size * 4));
+            p.point(ls_rect.x1 + ls_rect.x2 / 2, ls_rect.y1 + ls_rect.y2 / 2);
+        }
+
+    }
+
+    void drawPaths(StepPath[] it_path) {
+
+        MapRect ls_rect;
+
+        int lv_min_reward = Integer.MAX_VALUE;
+        int lv_max_reward = 0;
+
+
+        for (StepPath lo_path : it_path) {
+            if (lo_path.mv_reward > lv_max_reward) {
+                lv_max_reward = lo_path.mv_reward;
+            }
+            if (lo_path.mv_reward < lv_min_reward) {
+                lv_min_reward = lo_path.mv_reward;
+            }
+        }
+
+
+        p.stroke(255, 0, 255, 192);
+        p.strokeWeight(mv_field_size * 2);
+
+        for (StepPath lo_path : it_path) {
+
+            ls_rect = mapRect(lo_path.mv_x, lo_path.mv_y);
+            p.strokeWeight(p.map(lo_path.mv_reward, lv_min_reward, lv_max_reward, mv_field_size, mv_field_size * 4));
+            p.point(ls_rect.x1 + ls_rect.x2 / 2, ls_rect.y1 + ls_rect.y2 / 2);
+
+        }
+
+    }
 
 }

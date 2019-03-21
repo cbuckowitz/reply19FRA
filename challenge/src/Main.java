@@ -50,6 +50,8 @@ public class Main extends PApplet {
             mo_map_painter = new MapPainter(this, mo_terrain_map, mt_customer);
 
             mo_map_painter.drawMap();
+            mo_map_painter.drawCustomers(mt_customer);
+            mo_map_painter.drawPaths(lt_naive_paths);
 
         } catch (IOException e) {
             e.printStackTrace();

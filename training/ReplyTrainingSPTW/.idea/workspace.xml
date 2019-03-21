@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36c8617c-bb02-4f57-b85d-41316a53e309" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../challenge/src/MapPainter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../challenge/data/1_victoria_lake.txt.output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/data/1_victoria_lake.txt.output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../challenge/data/2_himalayas.txt.output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/data/2_himalayas.txt.output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../challenge/data/3_budapest.txt.output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/data/3_budapest.txt.output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../challenge/data/4_manhattan.txt.output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/data/4_manhattan.txt.output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../challenge/data/5_oceania.txt.output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/data/5_oceania.txt.output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../challenge/src/InputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/src/InputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../challenge/src/IntMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/src/IntMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../challenge/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../challenge/src/MapPainter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../challenge/src/MapPainter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
