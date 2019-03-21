@@ -1,71 +1,73 @@
+import processing.core.PApplet;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Main {
+public class Main extends PApplet {
+
+    private InputData mo_input_data;
+    private IntMap mo_terrain_map;
+    private Customer[] mt_customer;
+    private InputTerrainAdapter mo_input_terrain_adapter;
+    private StepPath mo_path;
 
 
-    protected static void outputStepPath(String iv_filename, StepPath[] it_steps) {
+    public static void main(String[] args) {
+        PApplet.main("ReplyProcessing");
 
-        BufferedWriter lo_writer = null;
+    }
+
+    public void settings() {
+        size(1200, 1000);
+
+    }
+
+    public void setup() {
+        String lv_input_filename = "data/4_manhattan.txt";
+
+        //get the input data
         try {
-            lo_writer = new BufferedWriter(new FileWriter(iv_filename, false));
 
-            for (StepPath lo_step : it_steps) {
+            // Dateninstanz aus Input Datei erzeugen
+            mo_input_data = new InputData(lv_input_filename);
 
-                lo_writer.write(lo_step.asString() + "\n");
+            mo_terrain_map = new IntMap(mo_input_data.width, mo_input_data.height);
 
-            }
+            // konvertieren des Input Terrain  in Terrain-Cost-Map
+            new InputTerrainAdapter(new TerrainCost(), mo_input_data).mapTerrain(mo_terrain_map);
 
-            lo_writer.close();
+            //Customer Input Daten in Customer Instanzen umsetzen
+            mt_customer = new InputCustomerAdapter(mo_input_data).get_customer();
+
+            NaiveOneStep mo_onestep = new NaiveOneStep(mo_terrain_map, mt_customer);
+            mo_onestep.computePaths();
+            StepPath[] lt_naive_paths = mo_onestep.getPrioPaths(mo_input_data.reply);
+
+            new OutputData(lt_naive_paths).writeFile(lv_input_filename + ".output.txt");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void draw() {
+//		draw_triangles();
+//		ellipse(width / 2, height / 2, second(), second());
+
+//		draw_grid_line(mv_grid_line += 10);
+
 
     }
 
+    protected void read_input(String iv_filename) {
 
-    public static void main(String[] args) throws IOException {
+    }
 
-        String lv_filename = "data/4_manhattan.txt";
+    protected void write_output(String iv_filename) {
 
-
-        File mo_file;
-
-        //construct file reader here
-        //read file given name here
-        mo_file = new File(lv_filename);
-
-        mo_file.readFile();
-
-
-        IntMap mo_terrain_map = new IntMap(mo_file.width, mo_file.height);
-
-        TerrainCost mo_cost = new TerrainCost();
-
-        //construct converter here
-        TerrainConverter mo_terrain_converter = new TerrainConverter(mo_cost);
-
-        // konvertieren der IntMap in Terrain-Cost-Matrix
-        mo_terrain_converter.convert(mo_file.Map, mo_terrain_map);
-
-        CustomerConverter mo_customer_converter = new CustomerConverter(mo_file.Customers);
-
-        Customer[] lt_customer = mo_customer_converter.Customers;
-
-        NaiveOneStep mo_onestep = new NaiveOneStep();
-        StepPath[] lt_paths = mo_onestep.computePaths(lt_customer, mo_terrain_map);
-
-        StepPath[] lt_naive_paths = mo_onestep.prioPaths(lt_paths, mo_file.reply);
-
-        outputStepPath(lv_filename + ".output.txt", lt_naive_paths);
     }
 
 
 }
-
-// Dennis was here
-// Christian was here
-// Mikhail was here too ;-)

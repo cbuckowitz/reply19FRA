@@ -2,9 +2,13 @@ import java.util.*;
 
 public class NaiveOneStep {
 
+    private IntMap mo_terrain;
+    private Customer[] mt_customer;
+    private ArrayList<StepPath> mt_path;
 
-    public NaiveOneStep() {
-
+    NaiveOneStep(IntMap io_terrain, Customer[] it_customer) {
+        mo_terrain = io_terrain;
+        mt_customer = it_customer;
     }
 
 
@@ -27,7 +31,7 @@ public class NaiveOneStep {
         }
     }
 
-    public StepPath[] prioPaths(StepPath[] it_path, int iv_offices) {
+    StepPath[] getPrioPaths(int iv_offices) {
 
         ArrayList<StepPath> lt_prio;
 
@@ -35,8 +39,7 @@ public class NaiveOneStep {
 
         Queue<StepPath> lq_path = new PriorityQueue<StepPath>(1000, new PathRewardComparator());
 
-
-        for (StepPath lo_path : it_path) {
+        for (StepPath lo_path : mt_path) {
             lq_path.add(lo_path);
         }
 
@@ -55,13 +58,11 @@ public class NaiveOneStep {
     }
 
 
-    public StepPath[] computePaths(Customer[] it_customer, IntMap io_terrain_map) {
+    void computePaths() {
 
-        ArrayList<StepPath> lt_steps;
+        mt_path = new ArrayList<StepPath>();
 
-        lt_steps = new ArrayList<StepPath>();
-
-        for (Customer lo_customer : it_customer) {
+        for (Customer lo_customer : mt_customer) {
 
             int lv_cost = Integer.MAX_VALUE;
             StepPath ro_path;
@@ -72,36 +73,36 @@ public class NaiveOneStep {
             try {
 
                 StepPath lo_path = new StepPath(lv_cx - 1, lv_cy);
-                lo_path.mv_reward = lo_customer.reward + io_terrain_map.getField(lv_cx, lv_cy);
+                lo_path.mv_reward = lo_customer.reward + mo_terrain.getField(lv_cx, lv_cy);
                 lo_path.addStep('R');
-                lt_steps.add(lo_path);
+                mt_path.add(lo_path);
 
             } catch (Exception e) {
 
                 try {
 
                     StepPath lo_path = new StepPath(lv_cx + 1, lv_cy);
-                    lo_path.mv_reward = lo_customer.reward + io_terrain_map.getField(lv_cx, lv_cy);
+                    lo_path.mv_reward = lo_customer.reward + mo_terrain.getField(lv_cx, lv_cy);
                     lo_path.addStep('L');
-                    lt_steps.add(lo_path);
+                    mt_path.add(lo_path);
 
                 } catch (Exception e2) {
 
                     try {
 
                         StepPath lo_path = new StepPath(lv_cx, lv_cy - 1);
-                        lo_path.mv_reward = lo_customer.reward + io_terrain_map.getField(lv_cx, lv_cy);
+                        lo_path.mv_reward = lo_customer.reward + mo_terrain.getField(lv_cx, lv_cy);
                         lo_path.addStep('D');
-                        lt_steps.add(lo_path);
+                        mt_path.add(lo_path);
 
                     } catch (Exception e3) {
 
                         try {
 
                             StepPath lo_path = new StepPath(lv_cx, lv_cy + 1);
-                            lo_path.mv_reward = lo_customer.reward + io_terrain_map.getField(lv_cx, lv_cy);
+                            lo_path.mv_reward = lo_customer.reward + mo_terrain.getField(lv_cx, lv_cy);
                             lo_path.addStep('U');
-                            lt_steps.add(lo_path);
+                            mt_path.add(lo_path);
 
                         } catch (Exception e4) {
 
@@ -115,9 +116,6 @@ public class NaiveOneStep {
 
 
         }
-
-
-        return lt_steps.toArray(new StepPath[0]);
     }
 
 
