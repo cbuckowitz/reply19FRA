@@ -16,8 +16,8 @@ public class IntMap {
     }
 
     public void setField(int x, int y, int value) throws Exception {
-        if (x > 0 && x < mv_width &&
-            y > 0 && y < mv_heigth) {
+        if (x >= 0 && x < mv_width &&
+            y >= 0 && y < mv_heigth) {
             mt_map[x][y] = value;
         }
 
@@ -26,8 +26,8 @@ public class IntMap {
 
     public int getField(int x, int y) throws Exception {
 
-        if (x > 0 && x < mv_width &&
-            y > 0 && y < mv_heigth) {
+        if (x >= 0 && x < mv_width &&
+            y >= 0 && y < mv_heigth) {
 
             if (mt_map[x][y] < 1) {
                 throw  new Exception();

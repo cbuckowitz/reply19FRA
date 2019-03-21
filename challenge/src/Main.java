@@ -1,7 +1,5 @@
 import processing.core.PApplet;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main extends PApplet {
@@ -11,11 +9,14 @@ public class Main extends PApplet {
     private Customer[] mt_customer;
     private InputTerrainAdapter mo_input_terrain_adapter;
     private StepPath mo_path;
+    private MapPainter mo_map_painter;
 
+    private static String gv_input_filename;
 
     public static void main(String[] args) {
-        PApplet.main("ReplyProcessing");
+        PApplet.main("Main");
 
+        gv_input_filename = args[0];
     }
 
     public void settings() {
@@ -24,13 +25,13 @@ public class Main extends PApplet {
     }
 
     public void setup() {
-        String lv_input_filename = "data/4_manhattan.txt";
+//        String lv_input_filename = "data/1_victoria_lake.txt";
 
         //get the input data
         try {
 
             // Dateninstanz aus Input Datei erzeugen
-            mo_input_data = new InputData(lv_input_filename);
+            mo_input_data = new InputData(gv_input_filename);
 
             mo_terrain_map = new IntMap(mo_input_data.width, mo_input_data.height);
 
@@ -44,7 +45,11 @@ public class Main extends PApplet {
             mo_onestep.computePaths();
             StepPath[] lt_naive_paths = mo_onestep.getPrioPaths(mo_input_data.reply);
 
-            new OutputData(lt_naive_paths).writeFile(lv_input_filename + ".output.txt");
+            new OutputData(lt_naive_paths).writeFile(gv_input_filename + ".output.txt");
+
+            mo_map_painter = new MapPainter(this, mo_terrain_map, mt_customer);
+
+            mo_map_painter.drawMap();
 
         } catch (IOException e) {
             e.printStackTrace();

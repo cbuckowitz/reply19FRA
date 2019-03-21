@@ -41,12 +41,10 @@ class InputData {
                 Customers = new String[cust];
                 Map = new String[height];
 
-            } else if (lv_line < cust && lv_line >= 1) {
-                Customers[lv_customer_count] = lv_zeile;
-                lv_customer_count++;
-            } else if (lv_line <= height && lv_line > 1 && lv_line > cust) {
-                Map[lv_map_count] = lv_zeile;
-                lv_map_count++;
+            } else if (lv_customer_count < cust && lv_line >= 1) {
+                Customers[lv_customer_count++] = lv_zeile;
+            } else if (lv_map_count <= height && lv_line > 1 && lv_line > cust) {
+                Map[lv_map_count++] = lv_zeile;
             }
 
             lv_line++;
